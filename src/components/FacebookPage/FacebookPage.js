@@ -21,7 +21,7 @@ import './facebookPage.css'
             <td>Otto</td>
             <td>@mdo</td>
             <td>
-              <button type='button' class='btn btn-primary'>
+              <button type='button' className='btn btn-primary'>
                 Primary
               </button>
             </td>

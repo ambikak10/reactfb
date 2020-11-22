@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
-import './login.css'
+import './login.css';
+import { useInitFbSDK } from '../../fb-sdk';
 
 class Login extends Component {
   constructor() {
@@ -38,7 +39,10 @@ class Login extends Component {
   render() {
     let fbContent;
     if (this.state.isLoggedIn) {
-      this.props.history.push("/dashboard")
+      this.props.history.push("/dashboard", {
+        id: this.state.userID,
+        access: this.state.access,
+      });
     } else {
       fbContent = (
         <FacebookLogin
@@ -62,3 +66,5 @@ class Login extends Component {
   }
 }
 export default Login;
+
+

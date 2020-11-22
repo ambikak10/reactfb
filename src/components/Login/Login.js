@@ -37,9 +37,9 @@ class Login extends Component {
   };
   render() {
     let fbContent;
-    // if (this.state.isLoggedIn) {
-    //   this.props.history.push("/dashboard")
-    // } else {
+    if (this.state.isLoggedIn) {
+      this.props.history.push("/dashboard")
+    } else {
       fbContent = (
         <FacebookLogin
           appId='379462766637679'
@@ -49,7 +49,7 @@ class Login extends Component {
           onClick={this.componentClicked}
         />
       );
-  //  }
+  }
     return (
       <div className='App App-logo'>
         <header className='App-header'>

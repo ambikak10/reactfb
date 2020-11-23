@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./updateInfo.css";
+// import is_empty from "./is-empty";
 
 class UpdateInfo extends Component {
   constructor() {
     super();
     this.state = {
-      email: null,
-      phone: null,
-      about: null,
-      hours: null,
+      website: '',
+      phone: '',
+      about: '',
+      description: '',
     };
   }
   onChange = (e) => {
@@ -17,51 +18,60 @@ class UpdateInfo extends Component {
   };
 
   onAbout = () => {
-    console.log("clicked update for about")
-    console.log(this.props)
+    
     let pageId=this.props.location.state.pageId;
     let pageAccessToken = this.props.location.state.pageAccessToken;
-    console.log(pageAccessToken);
+   
       window.FB.api(
         `https://graph.facebook.com/${pageId}?about=${this.state.about}&access_token=${pageAccessToken}`,
         "POST",
         {},
         function (response) {
-          console.log(response);
+
           alert("About field successfully changed");
         }.bind(this)
       );
   };
 
-  onEmail = () => {
-
+  onWebsite = () => {
+    console.log('Hi')
+   window.FB.api(
+     `https://graph.facebook.com/${this.props.location.state.pageId}?website=${this.state.website}&access_token=${this.props.location.state.pageAccessToken}`,
+     "POST",
+     {},
+     function (response) {
+       console.log(response)
+       alert("Website field successfully changed");
+     }.bind(this)
+   );
   };
 
   onPhone = () => {
-
+  window.FB.api(
+    `https://graph.facebook.com/${this.props.location.state.pageId}?phone=${this.state.phone}&access_token=${this.props.location.state.pageAccessToken}`,
+    "POST",
+    {},
+    function (response) {
+      alert("Phone field successfully changed");
+    }.bind(this)
+  );
   };
 
-  onHours = () => {
-
+  onAdditionalInformation = () => {
+      console.log("hi");
+    window.FB.api(
+      `https://graph.facebook.com/${this.props.location.state.pageId}?description=${this.state.description}&access_token=${this.props.location.state.pageAccessToken}`,
+      "POST",
+      {},
+      function (response) {
+        console.log(response);
+        alert("Additional Information field successfully changed");
+      }.bind(this)
+    );
   };
-  // componentDidMount = () => {
-  //   // console.log(this.props)
-  //   // console.log(this.props.location.state.pageId);
-  //   window.FB.api(
-  //     `https://graph.facebook.com/${this.props.history.location.state.pageId}?
-  //        fields=access_token&
-  //        access_token=${this.props.history.location.state.pageAccessToken}`,
-  //     "GET",
-  //     {},
-  //     function (response) {
-  //       console.log(response);
-  //       this.setState({
-  //         pageAccessToken: response.access_token,
-  //       });
-  //     }.bind(this)
-  //   );
-  // };
+
   render() {
+    // const enabledAbout = !is_empty(this.state.about);
     
     return (
       <Fragment>
@@ -88,25 +98,26 @@ class UpdateInfo extends Component {
                     onClick={this.onAbout}
                     type='button'
                     className='btn btn-primary'
+                    // disabled={!enabledAbout}
                   >
                     Update
                   </button>
                 </div>
 
                 <div className='form-group row profile-form-row'>
-                  <label className='col-lg-3 col-form-label'>Email</label>
+                  <label className='col-lg-3 col-form-label'>Website</label>
                   <input
                     type='text'
                     className='form-control col-lg-6'
-                    name='email'
-                    value={this.state.email}
+                    name='website'
+                    value={this.state.website}
                     onChange={this.onChange}
                   />
 
                   <button
                     style={{ marginLeft: "20px" }}
                     className='col-lg-3'
-                    onClick={this.onEmail}
+                    onClick={this.onWebsite}
                     type='button'
                     className='btn btn-primary'
                   >
@@ -115,18 +126,18 @@ class UpdateInfo extends Component {
                 </div>
 
                 <div className='form-group row profile-form-row'>
-                  <label className='col-lg-3 col-form-label'>Hours</label>
+                  <label className='col-lg-3 col-form-label'>Description</label>
                   <input
                     className='form-control col-lg-6'
-                    name='hours'
-                    value={this.state.hours}
+                    name='description'
+                    value={this.state.description}
                     onChange={this.onChange}
                   />
 
                   <button
                     style={{ marginLeft: "20px" }}
                     className='col-lg-3'
-                    onClick={this.onHours}
+                    onClick={this.onAdditionalInformation}
                     type='button'
                     className='btn btn-primary'
                   >

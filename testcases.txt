@@ -24,3 +24,6 @@ dahsboard selected hovering over
 EAAFZAHo9pMm8BAJJFU3fQRnyvZBoSzypw5bWGgDY7YCry0D2M21L98RoNNfzkTHWFZBAZB18ZAclR4mEZC36P5NqDol2hHurHo7K0kvn8jybhVgpWfDz20lEZB51Qc3TWgwA4NPxqqrLs7ZBi2R9kM1KeuLDEdZCYVI31gDbGD2phIoGgg7KxoTcnwZBMbwOoN2PXyQZCnnzxreOgZDZD
 
 update all together once
+
+
+input disbale in the beginning

@@ -8,15 +8,16 @@ class Dashboard extends Component {
     super()
     this.state = {
       pages: [],
+      pageAccessTokens: null
     }
   }
 
 componentDidMount () {
-    const id = this.props.location.state.id;
+    // const id = this.props.location.state.id;
     const access = this.props.location.state.access;
-    console.log(this.props);
-    console.log(access);
-    console.log(id);
+    // console.log(this.props);
+    // console.log(access);
+    // console.log(id);
       window.FB.api(
         `https://graph.facebook.com/${this.props.location.state.id}/accounts?access_token=${this.props.location.state.access}`,
         "GET",
@@ -24,7 +25,8 @@ componentDidMount () {
         function (response) {
           console.log(response); 
           this.setState({
-            pages: response.data
+            pages: response.data,
+
           });
         }.bind(this)
       );
@@ -57,7 +59,7 @@ componentDidMount () {
                     </i>
                   </Link>
                 </div>
-              
+
                 <i className='fa fa-star' aria-hidden='true'>
                   <span className='menu' style={{ fontFamily: "Nunito Sans" }}>
                     Reviews
@@ -101,6 +103,7 @@ componentDidMount () {
                       name={page.name}
                       id={page.id}
                       index={index + 1}
+                      pageAccessToken={page.access_token}
                     />
                   ))}
 

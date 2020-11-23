@@ -1,0 +1,20 @@
+
+1. this.setState in componentDidMount, was not working, you have to bind(this)
+
+https://stackoverflow.com/questions/31045716/react-this-setstate-is-not-a-function
+
+2. browser go back previous page arrow on clicking, app crashes
+
+3. window.FB.api - undefined due to javascript sdk script fixed
+added script file on top in head section of index.html
+
+Test cases
+successful
+unsuccessful
+
+skype id
+
+hosted url
+github link
+
+add comments

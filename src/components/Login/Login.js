@@ -18,11 +18,13 @@ class Login extends Component {
   }
   componentClicked = () => {
     console.log("clicked");
-    console.log(this.state.userID);
+    
     this.props.history.push("/dashboard", {
       id: this.state.userID,
       access: this.state.access,
     });
+
+    console.log(this.state.access);
   };
   responseFacebook = (response) => {
     console.log(response)

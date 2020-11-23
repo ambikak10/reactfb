@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import './login.css';
-import { useInitFbSDK } from '../../fb-sdk';
+
 
 class Login extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Login extends Component {
       access: "",
     };
   }
-  componentClicked = (e) => {
+  componentClicked = () => {
     console.log("clicked");
     console.log(this.state.userID);
     this.props.history.push("/dashboard", {

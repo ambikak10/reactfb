@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 import './dashboard.css'
 import FacebookPage from '../FacebookPage/FacebookPage'
-import fbsdk from "../../fb-sdk";
+//import fbsdk from "../../fb-sdk";
 
 
 class Dashboard extends Component {
   constructor(){
     super()
     this.state = {
-      source : 'Facebook',
-      pageName: [],
-      address: null,
+      pages: [],
     }
   }
 
 componentDidMount () {
-    const isFbSDKInitialized = fbsdk();
+    //const isFbSDKInitialized = fbsdk();
     const id = this.props.location.state.id;
     const access = this.props.location.state.access;
     console.log(this.props);
@@ -27,21 +25,24 @@ componentDidMount () {
         "GET",
         {},
         function (response) {
-          console.log(response); //need to use this response to fill data in dashboard table. But for that, how to acess and store this response?
-          this.setState = {
-            pageName : response.data
-          }
-        }
-       
-      )
+          console.log(response); 
+          this.setState({
+            pages: response.data
+          });
+        }.bind(this)
+      );
     // }
-    
   }
 
           
-  
   render() {
-  console.log(this.state.pageName)
+  console.log(this.state.pages)
+      var filteredPages = []
+  if(this.state.pages.length > 1){
+    filteredPages = this.state.pages.filter((page, index) => index < 3)
+  }
+  console.log(filteredPages);
+ 
       return (
         <div className='container '>
           <div className='row margin'>
@@ -85,23 +86,45 @@ componentDidMount () {
               className='col-xl-9 col-lg-9 col-md-9'
               style={{ position: "relative" }}
             >
-              {/* <div className='table'> */}
-              {/* <div className='pages'>PAGES</div> */}
-              {/* <div className='row'>
-                <FacebookPage />
-              </div> */}
-
               <table className='table'>
                 <thead>
                   <tr>
-                    <th scope='col'>#</th>
+                    <th scope='col'>Sl.No</th>
                     <th scope='col'>Source</th>
                     <th scope='col'>Page name</th>
-                    <th scope='col'>Address</th>
+                    <th scope='col'>Page ID</th>
+                    <th scope='col'>Category</th>
                     <th scope='col'>Action</th>
                   </tr>
                 </thead>
-                <FacebookPage />
+                <tbody>
+                  {filteredPages.map((page, index) => (
+                    <FacebookPage
+                      key={page.category_list[0].id}
+                      category={page.category}
+                      name={page.name}
+                      id={page.id}
+                      index={index + 1}
+                    />
+                  ))}
+
+                  <tr>
+                    <th scope='row'>{this.state.pages.length + 1}</th>
+                    <td>Yelp</td>
+                    <td>abc</td>
+                    <td>111.111</td>
+                    <td>Business</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>{this.state.pages.length + 2}</th>
+                    <td>Yahoo</td>
+                    <td>xyz</td>
+                    <td>222.222</td>
+                    <td>Business</td>
+                    <td></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

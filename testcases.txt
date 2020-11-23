@@ -1,6 +1,0 @@
-
-1. this.setState in componentDidMount, was not working, you have to bind(this)
-
-https://stackoverflow.com/questions/31045716/react-this-setstate-is-not-a-function
-
-2.

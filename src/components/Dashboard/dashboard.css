@@ -53,7 +53,7 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
-/* a:hover,
+a:hover,
 a.selected {
-  
-} */
+  color: rgb(129, 216, 228)
+}

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './dashboard.css'
 import FacebookPage from '../FacebookPage/FacebookPage'
-//import fbsdk from "../../fb-sdk";
-
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(){
@@ -13,13 +12,11 @@ class Dashboard extends Component {
   }
 
 componentDidMount () {
-    //const isFbSDKInitialized = fbsdk();
     const id = this.props.location.state.id;
     const access = this.props.location.state.access;
     console.log(this.props);
     console.log(access);
     console.log(id);
-    // if (isFbSDKInitialized){
       window.FB.api(
         `https://graph.facebook.com/${this.props.location.state.id}/accounts?access_token=${this.props.location.state.access}`,
         "GET",
@@ -31,7 +28,6 @@ componentDidMount () {
           });
         }.bind(this)
       );
-    // }
   }
 
           
@@ -49,8 +45,8 @@ componentDidMount () {
             <div className='col-xl-3 col-lg-3 col-md-3 grid'>
               <div className='appName'>REACT APP</div>
               <div>
-                <div className='selected'>
-                  <a href='#' className='selected'>
+                <div>
+                  <Link to='/dahsboard' className='selected'>
                     <i className='fa fa-home' aria-hidden='true'>
                       <span
                         className='menu'
@@ -59,9 +55,9 @@ componentDidMount () {
                         Dashboard
                       </span>
                     </i>
-                  </a>
+                  </Link>
                 </div>
-
+              
                 <i className='fa fa-star' aria-hidden='true'>
                   <span className='menu' style={{ fontFamily: "Nunito Sans" }}>
                     Reviews

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./updateInfo.css";
 // import is_empty from "./is-empty";
+import { Route, withRouter } from "react-router-dom";
 
 class UpdateInfo extends Component {
   constructor() {
@@ -69,7 +70,10 @@ class UpdateInfo extends Component {
       }.bind(this)
     );
   };
-
+ goBack = () => {
+   console.log(this.props.history)
+   this.props.history.goBack()
+ }
   render() {
     // const enabledAbout = !is_empty(this.state.about);
     
@@ -173,11 +177,24 @@ class UpdateInfo extends Component {
                     className='btn btn-primary'
                     style={{ marginRight: "10px" }}
                   />
-                  <Link to='/dashboard' className='btn btn-secondary'>
-                    Cancel
-                  </Link>
+               
                 </div> */}
               </form>
+
+              
+              <div style={{ marginTop: "30px", textAlign: "center" }}>
+                <input
+                  type='submit'
+                  value='Cancel'
+                  className='btn btn btn-secondary'
+                  style={{ marginRight: "10px" }}
+                  onClick={this.goBack}
+                />
+
+                {/* <Link to='/dashboard' className='btn btn-secondary'>
+                    Cancel
+                  </Link> */}
+              </div>
             </div>
           </div>
         </div>
@@ -186,4 +203,4 @@ class UpdateInfo extends Component {
   }
 }
 
-export default UpdateInfo;
+export default withRouter(UpdateInfo);

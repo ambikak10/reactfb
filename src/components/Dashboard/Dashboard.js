@@ -14,8 +14,8 @@ class Dashboard extends Component {
 
 componentDidMount () {
     // const id = this.props.location.state.id;
-    const access = this.props.location.state.access;
-    // console.log(this.props);
+    // const access = this.props.location.state.access;
+    console.log(this.props);
     // console.log(access);
     // console.log(id);
       window.FB.api(
@@ -48,7 +48,14 @@ componentDidMount () {
               <div className='appName'>REACT APP</div>
               <div>
                 <div>
-                  <Link to='/dahsboard' className='selected'>
+                  <Link to=
+                  {
+                    {
+                      pathName: '/dashboard',
+                      state: this.props.location.state
+                    }
+                  } 
+                  className='selected'>
                     <i className='fa fa-home' aria-hidden='true'>
                       <span
                         className='menu'

@@ -16,28 +16,35 @@ class Login extends Component {
       access: "",
     };
   }
+ 
+checkAuth = () => {
+  if(this.state.isLoggedIn){
+    this.componentClicked();
+  }
+}
   componentClicked = () => {
     console.log("clicked");
-    
     this.props.history.push("/dashboard", {
       id: this.state.userID,
       access: this.state.access,
     });
+  }
 
-    console.log(this.state.access);
-  };
+
   responseFacebook = (response) => {
     console.log(response)
-    this.setState({
-      name: response.name,
-      email: response.email,
-      address: response.address,
-      phone: response.phone,
-      userID: response.id,
-      access: response.accessToken,
-      isLoggedIn: true
-    });
-  };
+    if (response.accessToken){
+      this.setState({
+        name: response.name,
+        email: response.email,
+        address: response.address,
+        phone: response.phone,
+        userID: response.id,
+        access: response.accessToken,
+        isLoggedIn: true,
+      });
+    }
+  }
   render() {
     let fbContent;
     if (this.state.isLoggedIn) {
@@ -52,7 +59,7 @@ class Login extends Component {
           autoLoad={true}
           fields='name,email,picture'
           callback={this.responseFacebook}
-          onClick={this.componentClicked}
+          onClick={this.checkAuth}
         />
       );
   }

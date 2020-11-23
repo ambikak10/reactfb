@@ -32,12 +32,17 @@ componentDidMount () {
       );
   }
 
-          
+  // logout = () => {
+  //   window.FB.logout(function(response){
+  //     console.log(response)
+  //     window.location.reload()
+  //   })
+  // }
   render() {
   console.log(this.state.pages)
       var filteredPages = []
-  if(this.state.pages.length > 1){
-    filteredPages = this.state.pages.filter((page, index) => index < 3)
+  if (this.state.pages && this.state.pages.length > 1) {
+    filteredPages = this.state.pages.filter((page, index) => index < 3);
   }
   console.log(filteredPages);
  
@@ -48,14 +53,13 @@ componentDidMount () {
               <div className='appName'>REACT APP</div>
               <div>
                 <div>
-                  <Link to=
-                  {
-                    {
-                      pathName: '/dashboard',
-                      state: this.props.location.state
-                    }
-                  } 
-                  className='selected'>
+                  <Link
+                    to={{
+                      pathName: "/dashboard",
+                      state: this.props.location.state,
+                    }}
+                    className='selected'
+                  >
                     <i className='fa fa-home' aria-hidden='true'>
                       <span
                         className='menu'
@@ -84,6 +88,18 @@ componentDidMount () {
                     Settings
                   </span>
                 </i>
+
+                {/* <Link to='/'>
+                  <i class='fa fa-sign-out' aria-hidden='true'>
+                    <span
+                      onClick={this.logout}
+                      className='menu'
+                      style={{ fontFamily: "Nunito Sans" }}
+                    >
+                      Logout
+                    </span>
+                  </i>
+                </Link> */}
               </div>
             </div>
 
@@ -115,7 +131,11 @@ componentDidMount () {
                   ))}
 
                   <tr>
-                    <th scope='row'>{this.state.pages.length + 1}</th>
+                    <th scope='row'>
+                      {
+                      // this.state.pages && 
+                      this.state.pages.length + 1}
+                    </th>
                     <td>Yelp</td>
                     <td>abc</td>
                     <td>111.111</td>
@@ -123,7 +143,11 @@ componentDidMount () {
                     <td></td>
                   </tr>
                   <tr>
-                    <th scope='row'>{this.state.pages.length + 2}</th>
+                    <th scope='row'>
+                      {
+                      // this.state.pages &&
+                      this.state.pages.length + 2}
+                    </th>
                     <td>Yahoo</td>
                     <td>xyz</td>
                     <td>222.222</td>

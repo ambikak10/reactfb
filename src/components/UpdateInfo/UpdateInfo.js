@@ -6,7 +6,6 @@ class UpdateInfo extends Component {
   constructor() {
     super();
     this.state = {
-      pageAccessToken: '',
       email: null,
       phone: null,
       about: null,
@@ -16,25 +15,54 @@ class UpdateInfo extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  componentDidMount = () => {
-    // console.log(this.props)
-    // console.log(this.props.location.state.pageId);
-    window.FB.api(
-      `https://graph.facebook.com/${this.props.history.location.state.pageId}?
-         fields=access_token&
-         access_token=${this.props.history.location.state.pageAccessToken}`,
-      "GET",
-      {},
-      function (response) {
-        console.log(response);
-        this.setState({
-          pageAccessToken: response.access_token,
-        });
-      }.bind(this)
-    );
+
+  onAbout = () => {
+    console.log("clicked update for about")
+    console.log(this.props)
+    let pageId=this.props.location.state.pageId;
+    let pageAccessToken = this.props.location.state.pageAccessToken;
+    console.log(pageAccessToken);
+      window.FB.api(
+        `https://graph.facebook.com/${pageId}?about=${this.state.about}&access_token=${pageAccessToken}`,
+        "POST",
+        {},
+        function (response) {
+          console.log(response);
+          alert("About field successfully changed");
+        }.bind(this)
+      );
   };
+
+  onEmail = () => {
+
+  };
+
+  onPhone = () => {
+
+  };
+
+  onHours = () => {
+
+  };
+  // componentDidMount = () => {
+  //   // console.log(this.props)
+  //   // console.log(this.props.location.state.pageId);
+  //   window.FB.api(
+  //     `https://graph.facebook.com/${this.props.history.location.state.pageId}?
+  //        fields=access_token&
+  //        access_token=${this.props.history.location.state.pageAccessToken}`,
+  //     "GET",
+  //     {},
+  //     function (response) {
+  //       console.log(response);
+  //       this.setState({
+  //         pageAccessToken: response.access_token,
+  //       });
+  //     }.bind(this)
+  //   );
+  // };
   render() {
-    console.log(this.state.pageAccessToken)
+    
     return (
       <Fragment>
         <div className='profile-form-container'>
@@ -87,9 +115,7 @@ class UpdateInfo extends Component {
                 </div>
 
                 <div className='form-group row profile-form-row'>
-                  <label className='col-lg-3 col-form-label'>
-                    Hours
-                  </label>
+                  <label className='col-lg-3 col-form-label'>Hours</label>
                   <input
                     className='form-control col-lg-6'
                     name='hours'

@@ -19,7 +19,7 @@ class UpdateInfo extends Component {
       "GET",
       {},
       function (response) {
-        console.log(response);
+        
         this.setState({
           website: response.website,
           phone: response.phone,

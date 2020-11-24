@@ -35,7 +35,6 @@ class Dashboard extends Component {
   }
   logout = () => {
     window.FB.logout(function (response) {
-      console.log(response);
     });
     this.props.history.push("/");
     window.location.reload();

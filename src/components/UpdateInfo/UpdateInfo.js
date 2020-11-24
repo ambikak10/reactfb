@@ -18,65 +18,54 @@ class UpdateInfo extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onAbout = () => {
-    
-    let pageId=this.props.location.state.pageId;
-    let pageAccessToken = this.props.location.state.pageAccessToken;
-   
+  onUpdate = () => {
+   if(this.state.about){
+     let pageId = this.props.location.state.pageId;
+     let pageAccessToken = this.props.location.state.pageAccessToken;
+
+     window.FB.api(
+       `https://graph.facebook.com/${pageId}?about=${this.state.about}&access_token=${pageAccessToken}`,
+       "POST",
+       {},
+       function (response) {
+       }.bind(this)
+     );
+   }
+   if(this.state.website){
       window.FB.api(
-        `https://graph.facebook.com/${pageId}?about=${this.state.about}&access_token=${pageAccessToken}`,
+        `https://graph.facebook.com/${this.props.location.state.pageId}?website=${this.state.website}&access_token=${this.props.location.state.pageAccessToken}`,
         "POST",
         {},
         function (response) {
-
-          alert("About field successfully changed");
         }.bind(this)
       );
-  };
-
-  onWebsite = () => {
-    console.log('Hi')
-   window.FB.api(
-     `https://graph.facebook.com/${this.props.location.state.pageId}?website=${this.state.website}&access_token=${this.props.location.state.pageAccessToken}`,
-     "POST",
-     {},
-     function (response) {
-       console.log(response)
-       alert("Website field successfully changed");
-     }.bind(this)
-   );
-  };
-
-  onPhone = () => {
-  window.FB.api(
-    `https://graph.facebook.com/${this.props.location.state.pageId}?phone=${this.state.phone}&access_token=${this.props.location.state.pageAccessToken}`,
-    "POST",
-    {},
-    function (response) {
-      alert("Phone field successfully changed");
-    }.bind(this)
-  );
-  };
-
-  onAdditionalInformation = () => {
-      console.log("hi");
+   }
+   if(this.state.description){
+      window.FB.api(
+        `https://graph.facebook.com/${this.props.location.state.pageId}?phone=${this.state.phone}&access_token=${this.props.location.state.pageAccessToken}`,
+        "POST",
+        {},
+        function (response) {
+        }.bind(this)
+      );
+   }
+   if(this.state.onAdditionalInformation){
     window.FB.api(
       `https://graph.facebook.com/${this.props.location.state.pageId}?description=${this.state.description}&access_token=${this.props.location.state.pageAccessToken}`,
       "POST",
       {},
       function (response) {
-        console.log(response);
-        alert("Additional Information field successfully changed");
       }.bind(this)
     );
-  };
+   }
+   alert("Fields Updated")
+  }
+
  goBack = () => {
-   console.log(this.props.history)
    this.props.history.goBack()
  }
   render() {
     // const enabledAbout = !is_empty(this.state.about);
-    
     return (
       <Fragment>
         <div className='profile-form-container'>
@@ -95,17 +84,6 @@ class UpdateInfo extends Component {
                     value={this.state.about}
                     onChange={this.onChange}
                   />
-
-                  <button
-                    style={{ marginLeft: "20px" }}
-                    className='col-lg-3'
-                    onClick={this.onAbout}
-                    type='button'
-                    className='btn btn-primary'
-                    // disabled={!enabledAbout}
-                  >
-                    Update
-                  </button>
                 </div>
 
                 <div className='form-group row profile-form-row'>
@@ -118,7 +96,7 @@ class UpdateInfo extends Component {
                     onChange={this.onChange}
                   />
 
-                  <button
+                  {/* <button
                     style={{ marginLeft: "20px" }}
                     className='col-lg-3'
                     onClick={this.onWebsite}
@@ -126,7 +104,7 @@ class UpdateInfo extends Component {
                     className='btn btn-primary'
                   >
                     Update
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className='form-group row profile-form-row'>
@@ -138,7 +116,7 @@ class UpdateInfo extends Component {
                     onChange={this.onChange}
                   />
 
-                  <button
+                  {/* <button
                     style={{ marginLeft: "20px" }}
                     className='col-lg-3'
                     onClick={this.onAdditionalInformation}
@@ -146,7 +124,7 @@ class UpdateInfo extends Component {
                     className='btn btn-primary'
                   >
                     Update
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className='form-group row profile-form-row'>
@@ -159,7 +137,7 @@ class UpdateInfo extends Component {
                     onChange={this.onChange}
                   />
 
-                  <button
+                  {/* <button
                     style={{ marginLeft: "20px" }}
                     className='col-lg-3'
                     onClick={this.onPhone}
@@ -167,7 +145,7 @@ class UpdateInfo extends Component {
                     className='btn btn-primary'
                   >
                     Update
-                  </button>
+                  </button> */}
                 </div>
 
                 {/* <div style={{ marginTop: "30px", textAlign: "center" }}>
@@ -181,8 +159,18 @@ class UpdateInfo extends Component {
                 </div> */}
               </form>
 
-              
               <div style={{ marginTop: "30px", textAlign: "center" }}>
+                <button
+                  style={{ marginRight: "20px" }}
+                  className='col-lg-3'
+                  onClick={this.onUpdate}
+                  type='button'
+                  className='btn btn-primary'
+                  // disabled={!enabledAbout}
+                >
+                  Update
+                </button>
+
                 <input
                   type='submit'
                   value='Cancel'
@@ -190,11 +178,12 @@ class UpdateInfo extends Component {
                   style={{ marginRight: "10px" }}
                   onClick={this.goBack}
                 />
+              </div>
+              
 
-                {/* <Link to='/dashboard' className='btn btn-secondary'>
+              {/* <Link to='/dashboard' className='btn btn-secondary'>
                     Cancel
                   </Link> */}
-              </div>
             </div>
           </div>
         </div>

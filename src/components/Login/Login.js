@@ -23,7 +23,7 @@ checkAuth = () => {
   }
 }
   componentClicked = () => {
-    console.log("clicked");
+    // console.log("clicked");
     this.props.history.push("/dashboard", {
       id: this.state.userID,
       access: this.state.access,
@@ -32,7 +32,7 @@ checkAuth = () => {
 
 
   responseFacebook = (response) => {
-    console.log(response)
+    // console.log(response)
     if (response.accessToken){
       this.setState({
         name: response.name,

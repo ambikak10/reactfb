@@ -8,8 +8,8 @@ class FacebookPage extends Component {
   }
 
   onclick = () => {
-    console.log("clicked");
-    console.log("facebook", this.props.pageAccessToken, this.props.id);
+    // console.log("clicked");
+    // console.log("facebook", this.props.pageAccessToken, this.props.id);
     this.props.history.push("/update", {
       pageId: this.props.id,
       pageAccessToken: this.props.pageAccessToken

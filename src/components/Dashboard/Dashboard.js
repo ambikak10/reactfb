@@ -12,14 +12,14 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    var auth = console.log(this.props.location.state);
+    
     if (this.props.location.state && this.props.location.state.access) {
       window.FB.api(
         `https://graph.facebook.com/${this.props.location.state.id}/accounts?access_token=${this.props.location.state.access}`,
         "GET",
         {},
         function (response) {
-          console.log(response);
+         
           if (response.error) {
             this.props.history.push("/");
           } else {
@@ -40,12 +40,12 @@ class Dashboard extends Component {
     this.props.history.push("/");
   };
   render() {
-    console.log(this.state.pages);
+   
     var filteredPages = [];
     if (this.state.pages && this.state.pages.length > 1) {
       filteredPages = this.state.pages.filter((page, index) => index < 3);
     }
-    console.log(filteredPages);
+  
 
     return (
       <div className='container '>

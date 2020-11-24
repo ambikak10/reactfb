@@ -53,7 +53,12 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+/* a:hover,
+a:visited, .selected {
+  color: rgb(13, 49, 5)
+} */
 a:hover,
 a.selected {
-  color: rgb(129, 216, 228)
+  color: red;
+  background: #1b9910;
 }

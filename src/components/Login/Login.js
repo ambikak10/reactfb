@@ -56,7 +56,7 @@ checkAuth = () => {
       fbContent = (
         <FacebookLogin
           appId='379462766637679'
-          autoLoad={true}
+          autoLoad={false}
           fields='name,email,picture'
           callback={this.responseFacebook}
           onClick={this.checkAuth}

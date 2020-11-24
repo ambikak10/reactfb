@@ -6,6 +6,7 @@ class FacebookPage extends Component {
   constructor() {
     super()
   }
+
   onclick = () => {
     console.log("clicked");
     console.log("facebook", this.props.pageAccessToken, this.props.id);

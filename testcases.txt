@@ -8,6 +8,16 @@ https://stackoverflow.com/questions/31045716/react-this-setstate-is-not-a-functi
 3. window.FB.api - undefined due to javascript sdk script fixed
 added script file on top in head section of index.html
 
+4. Problem:
+Click on login button, and don't login to facebook in the popup, just closing it would redirect to dahsboard.
+solution: setstate only if isloggedIn is true and only if isLoggedIn is true, then redirect
+
+5. App crashes if user logs out in fb browser and if you are on some web page in app
+
+6. Fb.logout() doesn't work
+
+7. 
+
 Test cases
 successful
 unsuccessful
@@ -16,14 +26,16 @@ skype id
 
 hosted url
 github link
-
-add comments
+share credentials
 
 dahsboard selected hovering over
 
-EAAFZAHo9pMm8BAJJFU3fQRnyvZBoSzypw5bWGgDY7YCry0D2M21L98RoNNfzkTHWFZBAZB18ZAclR4mEZC36P5NqDol2hHurHo7K0kvn8jybhVgpWfDz20lEZB51Qc3TWgwA4NPxqqrLs7ZBi2R9kM1KeuLDEdZCYVI31gDbGD2phIoGgg7KxoTcnwZBMbwOoN2PXyQZCnnzxreOgZDZD
 
 update all together once
 
 
 input disbale in the beginning
+
+logout
+
+remove console..ogs and errors

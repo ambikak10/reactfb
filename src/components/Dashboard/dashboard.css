@@ -59,6 +59,5 @@ a:visited, .selected {
 } */
 a:hover,
 a.selected {
-  color: red;
   background: #1b9910;
 }

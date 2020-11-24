@@ -18,15 +18,9 @@ solution: setstate only if isloggedIn is true and only if isLoggedIn is true, th
 
 7. 
 
-Test cases
+
 successful
 unsuccessful
-
-skype id
-
-hosted url
-github link
-share credentials
 
 dahsboard selected hovering over
 
@@ -39,3 +33,13 @@ input disbale in the beginning
 logout
 
 remove console..ogs and errors
+show alreday available data in fields
+
+
+skype id
+hosted url
+github link
+share credentials
+Test cases
+
+validation

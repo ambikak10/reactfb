@@ -38,6 +38,7 @@ class Dashboard extends Component {
       console.log(response);
     });
     this.props.history.push("/");
+    window.location.reload();
   };
   render() {
    
@@ -66,7 +67,7 @@ class Dashboard extends Component {
                       className='menu'
                       style={{ fontFamily: "Nunito Sans" }}
                     >
-                      Dashboard
+                      Dashboard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </span>
                   </i>
                 </Link>
@@ -96,7 +97,7 @@ class Dashboard extends Component {
                     className='menu'
                     style={{ fontFamily: "Nunito Sans" }}
                   >
-                    Logout
+                    Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </span>
                 </i>
               </Link>

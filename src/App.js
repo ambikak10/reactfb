@@ -6,11 +6,11 @@ import UpdateInfo from "./components/UpdateInfo/UpdateInfo";
 
 function App() {
   return (
-    <Router>
-          <Route exact path='/' component={Login} />
-          <Route exact path='/dashboard' component={Dashboard} />
-          <Route exact path='/update' component={UpdateInfo}/>
-     
+    <Router basename='/'>
+      
+      <Route exact path='/' component={Login} />
+      <Route exact path='/dashboard' component={Dashboard} />
+      <Route exact path='/update' component={UpdateInfo} />
     </Router>
   );
 }

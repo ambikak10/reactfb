@@ -43,3 +43,8 @@ share credentials
 Test cases
 
 validation
+
+"homepage": "https://ambikak10.github.io/reactfb/",
+
+ "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"

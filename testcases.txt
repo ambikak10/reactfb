@@ -16,7 +16,9 @@ solution: setstate only if isloggedIn is true and only if isLoggedIn is true, th
 
 6. Fb.logout() doesn't work
 
-7. 
+https://github.com/facebook/create-react-app/issues/1765
+https://stackoverflow.com/questions/54427793/getting-blank-page-after-react-app-publish-in-github
+https://stackoverflow.com/questions/36857147/react-router-2-0-browserhistory-doesnt-work-when-refreshing/37622953#37622953
 
 
 successful
